@@ -1,5 +1,5 @@
-class Welcome {
-  Welcome({
+class ApiResponse {
+  ApiResponse({
     required this.status,
     required this.totalResults,
     required this.articles,
@@ -9,18 +9,12 @@ class Welcome {
   int totalResults;
   List<Article> articles;
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory ApiResponse.fromJson(Map<String, dynamic> json) => ApiResponse(
         status: json["status"],
         totalResults: json["totalResults"],
         articles: List<Article>.from(
             json["articles"].map((x) => Article.fromJson(x))),
       );
-
-  Map<String, dynamic> toJson() => {
-        "status": status,
-        "totalResults": totalResults,
-        "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
-      };
 }
 
 class Article {
@@ -46,25 +40,14 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
         source: Source.fromJson(json["source"]),
-        author: json["author"] == null ? null : json["author"],
+        author: json["author"] ?? 'null',
         title: json["title"],
         description: json["description"],
         url: json["url"],
-        urlToImage: json["urlToImage"] == null ? null : json["urlToImage"],
+        urlToImage: json["urlToImage"] ?? 'null',
         publishedAt: DateTime.parse(json["publishedAt"]),
         content: json["content"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "source": source.toJson(),
-        "author": author == null ? null : author,
-        "title": title,
-        "description": description,
-        "url": url,
-        "urlToImage": urlToImage == null ? null : urlToImage,
-        "publishedAt": publishedAt.toIso8601String(),
-        "content": content,
-      };
 }
 
 class Source {
@@ -77,12 +60,7 @@ class Source {
   String name;
 
   factory Source.fromJson(Map<String, dynamic> json) => Source(
-        id: json["id"] == null ? null : json["id"],
+        id: json["id"] ?? 'null',
         name: json["name"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id == null ? null : id,
-        "name": name,
-      };
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'api_int.dart';
+import 'screens/news_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Api Integration',
       home: ApiInt(),
     );
