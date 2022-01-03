@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:news_api/api_response_model.dart';
+import 'package:news_api/model/api_response_model.dart';
 
 class ApiInt extends StatefulWidget {
   const ApiInt({Key? key}) : super(key: key);
